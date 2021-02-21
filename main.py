@@ -5,9 +5,13 @@ api_key = u'b766ae533b2843f748b174f53885eee4'
 api_secret = u'ac3884caa9690723'
 
 flickr = flickrapi.FlickrAPI(api_key, api_secret, format='json')
-photos = flickr.photos.search(per_page='250', bbox='60.562697, 21.402542, 69.766582, 28.664383', has_geo=1)
+photos = flickr.photos.search(per_page='250', bbox='21.402542, 60.562697, 28.664383, 69.766582', has_geo=1)
 parsed = json.loads(photos.decode('utf-8'))
-
+print(123)
+id = parsed['photos']['photo'][0]['id']
+geo = flickr.do_flickr_call('flickr.photos.geo.getLocation', photo_id=id)
+print(json.loads(geo.decode('utf-8')))
+parsed = json.loads(geo.decode('utf-8'))
 
 ## 6242 pages, 10 photos per page
 ## 50932, 10p/p
@@ -18,8 +22,9 @@ for i in range(1,40):
     res = flickr.photos.search(per_page='250', bbox='60.562697, 21.402542, 69.766582, 28.664383', has_geo=1)
     parsed = json.loads(photos.decode('utf-8'))
     for p in parsed['photos']['photo']:
-        photos_set.append(photos)
+        photos_set.append(p)
 
+len(photos_set)
 # 50 lat x 50 lon -> at least 500 squares
 
 # for lat in range(latidudes):
