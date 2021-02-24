@@ -5,7 +5,7 @@ api_key = u'b766ae533b2843f748b174f53885eee4'
 api_secret = u'ac3884caa9690723'
 
 flickr = flickrapi.FlickrAPI(api_key, api_secret, format='json')
-photos = flickr.photos.search(per_page='250', bbox='21.402542, 60.562697, 28.664383, 69.766582', has_geo=1)
+photos = flickr.photos.search(per_page='250', bbox='20.410, 59.800, 30.920, 69.910', has_geo=1)
 parsed = json.loads(photos.decode('utf-8'))
 print(123)
 id = parsed['photos']['photo'][0]['id']
