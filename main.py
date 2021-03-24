@@ -14,6 +14,17 @@ api_secret = u'ac3884caa9690723'
 
 flickr = flickrapi.FlickrAPI(api_key, api_secret, format='json')
 
+f = open('dataset/raw/veronika_users.csv', 'a')
+
+for row in tqdm(photo_ids[780:38000]):
+    photo = flickr.do_flickr_call('flickr.photos.getInfo', photo_id=row)
+    parsed = json.loads(photo.decode('utf-8'))
+    user = parsed['photo']['owner']['username']
+    s = str(row) + ',' + user + '\n'
+    f.write(s)
+f.close()
+
+
 min_lat = 59.800
 max_lat = 69.910
 min_lon = 20.410
