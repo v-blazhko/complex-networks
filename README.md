@@ -31,9 +31,9 @@ Determine the following:
 - What are the most common picture names?
 
 ### Dirs:
-- collecting_dataset: data scraping and dataset preprocessing
-- clustering: clustering the raw data and processing
-- datset:raw and finalized data in CSV format
-- plotting: examples of plotting spatial data on a map (geopandas, basemap and plain networkx)
-- project_tasks: network analysis mentioned above
-- main_graph.ipyinb: a quick glance of the final graph and main network parameters
+- **/collecting_dataset**: data scraping and dataset preprocessing
+- **/clustering: clustering** the raw data and processing
+- **/datset**:raw and finalized data in CSV format
+- **/plotting**: examples of plotting spatial data on a map (geopandas, basemap and plain networkx)
+- **/project_task**s: network analysis mentioned above
+- **_main_graph.ipyinb_**: a quick glance of the final graph and main network parameters
