@@ -1,25 +1,39 @@
-**What we are going to look for**
+## Identifying the complex network of locations in Finland
+Data scraping
+- 500 locations total needed
+- Data is collected using Flickr API - https://www.flickr.com/services/api/
+- Total number of images with location data collected ~77k
+- Two locations are connected based on the subset of users visited _both_ locations
+- Location centroids are determined using k-means algorithm
 
-We need 500 locations total
+### Network analysis
+**Community Discovery**
+Analyze and compare the modular structure of the crawled network sample. The results
+of at least three different algorithms should be presented.
+• K-clique (available in NetworkX)
+• DEMON (code available at https://github.com/GiulioRossetti/demon)
+• Louvain (code available at http://perso.crans.org/aynaud/communities/)
+• Infomap (https://www.mapequation.org/)
 
-We start with Tampere
-We look for the users that took a picture in Tampere (we either use the tag, or location)
-Users take pictures in many locations, many locations are visited by many users
-Many-to-many relation
+**Speading analysis**
+Simulate a spreading process (SIS and/or SIR) both on the crawled data and on random
+graphs (i.e., ER and BA).
 
-[u1, u1, u3... uN] - that took a picture in Tampere
-u1: find all locations where they took a picture (Helsinki, Oulu, Moscow)
-u2: find all locations where they took a picture 
-u3: find all locations where they took a picture
-.
-.
-.
-uN: find all locations where they took a picture
+**Random networks**
+Analyze the crawled social/complex network sample and compare the obtained network statistics
+with 2 random graph models having the same number of nodes and edges, i.e. Erdős-Rényi (ER)
+random network model and the Barabási-Albert (BA) preferential attachment network model
 
-=> sqlite one table, many to many relation
-----------------------------
-| user_id | location_name  |
-----------------------------
+**Statistical analysis**
+Determine the following:
+- What the most popular locations in Finalnd?
+- What is the busiest route?
+- What are the most common picture names?
 
-SELECT COUNT(location_name) 
-GROUP BY user_id 
+### Dirs:
+- collecting_dataset: data scraping and dataset preprocessing
+- clustering: clustering the raw data and processing
+- datset:raw and finalized data in CSV format
+- plotting: examples of plotting spatial data on a map (geopandas, basemap and plain networkx)
+- project_tasks: network analysis mentioned above
+- main_graph.ipyinb: a quick glance of the final graph and main network parameters
